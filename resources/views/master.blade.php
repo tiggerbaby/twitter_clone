@@ -59,8 +59,12 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+      @if(\Auth::check())
+        <li><a href="/logout">Logout</a></li>
+      @else
         <li><a href="/register">Register</a></li>
-        <li><a href="/login">Log In</a></li>
+        <li><a href="/login">LogIn</a></li>
+      @endif   
         {{-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">

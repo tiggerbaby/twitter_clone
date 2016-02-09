@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('contact','ContactController@index');
-Route::get('register','Auth\AuthController@getRegister')->middleware('web');
-Route::post('register','Auth\AuthController@postRegister')->middleware('web');;
+Route::get('/', 'HomeController@index')->middleware('web');
 
+Route::get('contact','ContactController@index')->middleware('web');
+
+Route::get('register','Auth\AuthController@getRegister')->middleware('web');
+Route::post('register','Auth\AuthController@postRegister')->middleware('web');
+Route::get('logout','Auth\AuthController@logout')->middleware('web');
+
+Route::get('login','Auth\AuthController@getlogin')->middleware('web');
+Route::post('login','Auth\AuthController@postlogin')->middleware('web');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
