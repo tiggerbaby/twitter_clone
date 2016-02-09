@@ -13,7 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('contact','ContactController@index');
-Route::get('register','Auth\AuthController@getRegister');
+Route::get('register','Auth\AuthController@getRegister')->middleware('web');
+Route::post('register','Auth\AuthController@postRegister')->middleware('web');;
 
 /*
 |--------------------------------------------------------------------------

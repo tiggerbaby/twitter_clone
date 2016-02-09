@@ -5,6 +5,6 @@
 
 @section('content')
 <div class="container">
-<h1 id="brand">Twitter Clone</h1>
+<h1>Twitter Clone</h1>
 </div>
 @endsection
