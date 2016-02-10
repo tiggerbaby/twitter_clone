@@ -1,4 +1,4 @@
-accextends('master')
+@extends('master')
 
 @section('title', 'Register a new account')
 @section('meta-description','Contact Us about any issues or comments')
@@ -11,6 +11,11 @@ accextends('master')
 	<div class="form-group">
 		<label for="name">Full Name:</label>
 		<input class="form-control" type="text" name="name" id="name" placeholder="Michael Jackson">
+	</div>
+
+	<div class="form-group">
+		<label for="username">UserName:</label>
+		<input class="form-control" type="text" name="username" id="username" placeholder="hahahaha">
 	</div>
 
 	<div class="form-group">
