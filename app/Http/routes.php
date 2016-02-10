@@ -23,6 +23,8 @@ Route::get('login','Auth\AuthController@getlogin')->middleware('web');
 Route::post('login','Auth\AuthController@postlogin')->middleware('web');
 
 Route::get('account', 'AccountController@index')->middleware(['web','auth']);
+
+Route::post('account/new-tweet','AccountController@newTweet')->middleware(['web','auth']);
 /*
 |--------------------------------------------------------------------------
 | Application Routes

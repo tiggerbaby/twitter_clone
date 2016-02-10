@@ -20,6 +20,8 @@
 	 
 	 <input type="submit" value="Log in">
 	</form>
+
+	
 @if(count($errors))
 	<ul>
 		@foreach($errors->all() as $error)
