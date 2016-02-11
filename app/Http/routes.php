@@ -24,7 +24,9 @@ Route::post('login','Auth\AuthController@postlogin')->middleware('web');
 
 Route::get('profile', 'ProfileController@index')->middleware(['web','auth']);
 Route::post('profile/new-tweet','ProfileController@newTweet')->middleware(['web','auth']);
-Route::get('profile/{username}','ProfileController@show')->middleware(['web','auth']);
+Route::get('profile/{username}','ProfileController@show')->middleware(['web']);
+
+Route::post('profile/new-comment','ProfileController@newComment')->middleware(['web','auth']);
 /*
 |--------------------------------------------------------------------------
 | Application Routes

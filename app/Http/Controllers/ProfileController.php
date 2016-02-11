@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tweet;
 use App\User;
+use App\Comment;
 
 class ProfileController extends Controller
 {
@@ -50,4 +51,28 @@ class ProfileController extends Controller
 
     	return view('profile.show',compact('user','userPosts'));
     }
+
+    public function newComment(Request $request)
+    {
+        // 
+        $this -> validate($request, [
+            'comment'=>'required|min:4|max:140',
+            'tweet-id'=>'required|exists:tweets,id',
+            ]);
+
+        //Create new comment
+        $comment = new Comment();
+
+        $comment->content = $request->comment;
+        $comment->user_id = \Auth::user()->id;
+        $comment->tweet_id = $request['tweet-id'];
+
+        $comment->save();
+
+        //return 'good to go';
+        // return $request->all();
+        return back();
+
+    }
+
 }

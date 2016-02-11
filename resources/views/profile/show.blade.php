@@ -16,6 +16,10 @@
  	</ul>
   </header>
 
+ @if(count($errors))
+ 	<p class="text-danger">COMMENT FORM INVALID</p>
+ @endif
+
  @foreach( $userPosts as $tweet )
      
      <article class="bg-success tweet">
@@ -23,6 +27,20 @@
      	<small>Posted: {{ $tweet->created_at }} by {{ $tweet->user->name }}</small>
  
      	<h2>Comments:</h2>
+
+     	@if(\Auth::check())
+     	<form action="/profile/new-comment" method="post">
+     		{!! csrf_field() !!}
+           
+     		<input type="hidden" name="tweet-id" value="{{ $tweet->id}}">
+
+     	<div class="form-group">
+     		<label for="comment">Comment: </label>
+     		<textarea class="form-control" name="comment" id="comment" cols="30" rows="6"></textarea>
+
+     		<input type="submit" value="Reply">
+     	</form>
+     	@endif
 
      @forelse($tweet->comments as $comment)
      	<article>
