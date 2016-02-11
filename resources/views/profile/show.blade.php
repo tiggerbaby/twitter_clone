@@ -18,11 +18,23 @@
 
  @foreach( $userPosts as $tweet )
      
-     <article class="tweet">
-     	<p class="bg-success">{{ $tweet->content }}</p>
-     	<p class="bg-success">Posted: {{ $tweet->created_at }} by {{ $tweet->user->name }}</p>
-     </article>
+     <article class="bg-success tweet">
+     	<p>{{ $tweet->content }}</p>
+     	<small>Posted: {{ $tweet->created_at }} by {{ $tweet->user->name }}</small>
+ 
+     	<h2>Comments:</h2>
 
+     @forelse($tweet->comments as $comment)
+     	<article>
+     		<p> {{ $comment->content }}</p>
+     		<small>Written by {{ $comment->user->name }}</small>
+     	</article>
+     	@empty
+     	<p>Be the first to reply!</p>
+     	@endforelse
+     	<hr>
+     </article>
+ 
  @endforeach
 
 @endsection
