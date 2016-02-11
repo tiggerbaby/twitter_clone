@@ -27,6 +27,8 @@ Route::post('profile/new-tweet','ProfileController@newTweet')->middleware(['web'
 Route::get('profile/{username}','ProfileController@show')->middleware(['web']);
 
 Route::post('profile/new-comment','ProfileController@newComment')->middleware(['web','auth']);
+Route::get('profile/delete-tweet/{id}','ProfileController@deleteTweet')->middleware(['web','auth']);
+Route::get('profile/delete-tweet/{id}/confirm', 'ProfileController@destroyTweet')->middleware(['web','auth']);
 /*
 |--------------------------------------------------------------------------
 | Application Routes
