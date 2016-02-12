@@ -31,6 +31,10 @@
     <textarea class="form-control" name="content" id="content" cols="30" rows"10" >{{ old('content') }} </textarea> 
   </div>
   
+  <div class="form-group">
+  	<label for="tags">Tags: </label>
+  	<textarea class="form-control" name="tags" id="tags" placeholder="#web #design #awesome">{{ old('tags')}}</textarea>
+  </div>
   <button type="submit" class="btn btn-default">Post</button>
 
 </form>

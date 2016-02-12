@@ -10,6 +10,7 @@ use App\Tweet;
 use App\User;
 use App\Comment;
 use Intervention\Image\ImageManager;
+use App\Tag;
 
 
 class ProfileController extends Controller
@@ -39,7 +40,36 @@ class ProfileController extends Controller
     	$newTweet->save();
 
     	// return $request->all();
-    	return redirect('profile');
+
+         //precess the tags
+        $tags = explode('#', $request->tags);
+
+        $tagsFormatted = [];
+
+        // Clean up the tags
+        foreach($tags as $tag ){
+            if( trim($tag) ){
+                $tagsFormatted[] = strtolower(trim($tag));
+            }
+        }
+
+        $allTagsIds= [];
+        // Loop over each tag
+
+        foreach($tagsFormatted as $tag){
+
+            // Grab the first matching result OR insert this new unique tag
+            $theTag = Tag::firstOrCreate(['name'=>$tag]);
+
+            $allTagIds[] = $theTag->id;
+
+        }
+        
+        //
+        $newTweet->tags()->attach($allTagsIds);
+        
+        return redirect('profile');
+    	
     }
 
     public function show($username){
@@ -71,8 +101,10 @@ class ProfileController extends Controller
 
         $comment->save();
 
+
         //return 'good to go';
         // return $request->all();
+
         return back();
 
     }
