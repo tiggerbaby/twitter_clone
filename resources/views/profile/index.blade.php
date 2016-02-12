@@ -10,6 +10,18 @@
 <ul>
 	<li class="text-success">Total Tweets: {{ $totalTweets}}</li>
 </ul>
+
+@if( !\Auth::user()->profileImage )
+  <h3 class="text-danger">Add a new profile image!</h3>
+  <form action="/profile/new-profile-image" method="post" enctype="multipart/form-data">
+  {!! csrf_field()!!}
+  <div class="form-group">
+  		 <input  class="form-control" type="file" name="photo" required>
+  </div>
+   <input type="submit" value="Upload!">
+  </form>
+@endif 
+
 <h2>Write a new Tweet.</h2>
 
 <form action="/profile/new-tweet" method="post">
